@@ -1,0 +1,128 @@
+app:
+  title: Open Telekom Cloud Backstage App
+  baseUrl: http://localhost:3000
+  support:
+    url: https://gitea.eco.tsi-dev.otc-service.com/backstage/backstage
+    items:
+      - title: Issues
+        icon: github
+        links:
+          - url: https://gitea.eco.tsi-dev.otc-service.com/backstage/backstage/issues
+            title: Gitea Issues
+
+auth:
+  # see https://backstage.io/docs/auth/ to learn about auth providers
+  environment: development
+  providers:
+    oauth2Proxy: {}
+    github:
+      development:
+        clientId: ${GITHUB_AUTH_CLIENT_ID}
+        clientSecret: ${GITHUB_AUTH_CLIENT_SECRET}
+      production:
+        clientId: ${GITHUB_PRODUCTION_CLIENT_ID}
+        clientSecret: ${GITHUB_PRODUCTION_CLIENT_SECRET}
+
+backend:
+  # Used for enabling authentication, secret is shared by all backend plugins
+  # See https://backstage.io/docs/tutorials/backend-to-backend-auth for
+  # information on the format
+  # auth:
+  #   keys:
+  #     - secret: ${BACKEND_SECRET}
+  baseUrl: http://localhost:7007
+  listen:
+    port: 7007
+    # Uncomment the following host directive to bind to specific interfaces
+    # host: 127.0.0.1
+  csp:
+    connect-src: ["'self'", 'http:', 'https:']
+    # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
+    # Default Helmet Content-Security-Policy values can be removed by setting the key to false
+  cors:
+    origin: http://localhost:3000
+    methods: [GET, HEAD, PATCH, POST, PUT, DELETE]
+    credentials: true
+  # This is for local development only, it is not recommended to use this in production
+  # The production database configuration is stored in app-config.production.yaml
+  database:
+    client: better-sqlite3
+    connection: ':memory:'
+  cache:
+    store: memory
+  # workingDirectory: /tmp # Use this to configure a working directory for the scaffolder, defaults to the OS temp-dir
+  reading:
+    allow:
+      - host: opendev.org
+      - host: zuul-ci.org
+
+catalog:
+  #  providers:
+  #    keycloakOrg:
+  #      default:
+  #        baseUrl: https://keycloak.eco.tsi-dev.otc-service.com/
+  #        loginRealm: ${KEYCLOAK_REALM}
+  #        realm: ${KEYCLOAK_REALM}
+  #        clientId: ${KEYCLOAK_CLIENTID}
+  #        clientSecret: ${KEYCLOAK_CLIENTSECRET}
+  readonly: true
+  rules:
+    - allow: [Component, System, API, Resource, Location, Group, User]
+  locations:
+    # General
+    #    - type: url
+    #      target: https://gitea.eco.tsi-dev.otc-service.com/backstage/catalog/contents/blob/main/otc-catalog.yaml
+    #      rules:
+    #        - allow: [Domain, Group, User, Location, Component, Resource, API, System]
+    #    # Compute
+    #    - type: url
+    #      target: https://gitea.eco.tsi-dev.otc-service.com/backstage/catalog-compute/contents/blob/main/catalog.yaml
+    #    # Ecosystem
+    #    - type: url
+    #      target: https://gitea.eco.tsi-dev.otc-service.com/backstage/catalog-ecosystem/contents/blob/main/catalog.yaml
+dependencytrack:
+  baseUrl: https://dependencytrack.eco.tsi-dev.otc-service.com
+
+grafana:
+  # Publicly accessible domain - where links will point to
+  domain: https://dashboard.tsi-dev.otc-service.com
+  unifiedAlerting: false
+
+integrations:
+  github:
+    - host: github.com
+      apps:
+        - $include: github-app-backstage-otc-credentials.yaml
+  gitea:
+    - host: gitea.eco.tsi-dev.otc-service.com
+      password: "${GITEA_TOKEN}"
+
+organization:
+  name: Open Telekom Cloud
+
+proxy:
+  "/zuul":
+    target: "https://zuul.otc-service.com/api"
+  '/grafana/api':
+    target: https://dashboard.tsi-dev.otc-service.com
+    headers:
+      Authorization: "${GRAFANA_TOKEN}"
+  '/dependencytrack':
+    target: https://dependencytrack.eco.tsi-dev.otc-service.com
+    allowedMethods: ['GET']
+    headers:
+      X-Api-Key: "${DEPENDENCYTRACK_TOKEN}"
+
+scaffolder:
+  # see https://backstage.io/docs/features/software-templates/configuration for software template options
+
+# Reference documentation http://backstage.io/docs/features/techdocs/configuration
+# Note: After experimenting with basic setup, use CI/CD to generate docs
+# and an external cloud storage when deploying TechDocs for production use-case.
+# https://backstage.io/docs/features/techdocs/how-to-guides#how-to-migrate-from-techdocs-basic-to-recommended-deployment-approach
+techdocs:
+  builder: 'external'  # Alternatives - 'external'
+  generator:
+    runIn: 'docker'  # Alternatives - 'local'
+  publisher:
+    type: 'local'  # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
