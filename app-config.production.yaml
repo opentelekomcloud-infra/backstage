@@ -33,3 +33,12 @@ backend:
   #      # ssl:
   #      #   ca: # if you have a CA file and want to verify it you can uncomment this section
   #      #     $file: <file-path>/ca/server.crt
+
+integrations:
+  gitea:
+    - host: gitea.eco.tsi-dev.otc-service.com
+      password: "${GITEA_TOKEN}"
+  github:
+    - host: github.com
+      apps:
+        - $include: github-app-backstage-otc-credentials.yaml

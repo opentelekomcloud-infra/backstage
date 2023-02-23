@@ -89,13 +89,6 @@ grafana:
   unifiedAlerting: false
 
 integrations:
-  github:
-    - host: github.com
-      apps:
-        - $include: github-app-backstage-otc-credentials.yaml
-  gitea:
-    - host: gitea.eco.tsi-dev.otc-service.com
-      password: "${GITEA_TOKEN}"
 
 organization:
   name: Open Telekom Cloud

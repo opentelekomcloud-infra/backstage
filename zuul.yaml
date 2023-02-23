@@ -1,0 +1,47 @@
+---
+
+- job:
+    name: backstage-build-image
+    parent: otc-build-container-image
+    description: Build backstage container image
+    provides: backstage-container-image
+      #pre-run:
+      #- playbooks/pre.yaml
+        # run:
+        # - playbooks/run.yaml
+    vars: &backstage_image_vars
+      container_command: podman
+      container_images:
+        - context: .
+          registry: quay.io
+          repository: quay.io/opentelekomcloud/backstage
+          tags:
+            # If zuul.tag is defined: [ '3', '3.19', '3.19.0' ].  Only works for 3-component tags.
+            # Otherwise: ['latest']
+            &imagetag "{{ zuul.tag is defined | ternary([zuul.get('tag', '').split('.')[0], '.'.join(zuul.get('tag', '').split('.')[:2]), zuul.get('tag', '')], ['latest']) }}"
+
+- job:
+    name: backstage-upload-image
+    parent: otcinfra-upload-container-images
+    vars: *backstage_image_vars
+
+- project:
+    merge-mode: squash-merge
+    default-branch: main
+    # templates:
+    #   - security-analysis-jobs
+    vars:
+      node_version: 18
+    check:
+      jobs:
+        - backstage-build-image
+    check-post:
+      jobs:
+        - backstage-upload-image
+    gate:
+      jobs:
+        - backstage-build-image
+        - backstage-upload-image
+    release:
+      jobs:
+        - backstage-upload-image

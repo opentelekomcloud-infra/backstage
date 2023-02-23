@@ -1,0 +1,19 @@
+---
+- hosts: all
+  roles:
+    - ensure-yarn
+  tasks:
+    - name: Yarn install
+      ansible.builtin.command: yarn install
+      args:
+        chdir: "{{ zuul.project.src_dir }}"
+
+    - name: Yarn tsc
+      ansible.builtin.command: yarn tsc
+      args:
+        chdir: "{{ zuul.project.src_dir }}"
+
+    - name: Yarn build:backend
+      ansible.builtin.command: yarn build:backend
+      args:
+        chdir: "{{ zuul.project.src_dir }}"
