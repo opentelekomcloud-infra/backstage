@@ -10,11 +10,10 @@
         # run:
         # - playbooks/run.yaml
     vars: &backstage_image_vars
-      container_command: podman
       container_images:
         - context: .
           registry: quay.io
-          repository: quay.io/opentelekomcloud/backstage
+          repository: opentelekomcloud/backstage
           tags:
             # If zuul.tag is defined: [ '3', '3.19', '3.19.0' ].  Only works for 3-component tags.
             # Otherwise: ['latest']
