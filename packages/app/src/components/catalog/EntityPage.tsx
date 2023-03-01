@@ -76,6 +76,7 @@ import {
   EntityDependencytrackFindingCard,
   isDependencytrackAvailable,
 } from '@trimm/plugin-dependencytrack';
+import { QuayPage, isQuayAvailable } from '@janus-idp/backstage-plugin-quay';
 
 const zuulContent = (
   <EntitySwitch>
@@ -226,6 +227,10 @@ const serviceEntityPage = (
       />
     </EntityLayout.Route>
 
+    <EntityLayout.Route if={isQuayAvailable} path="/quay" title="Quay">
+      <QuayPage />
+    </EntityLayout.Route>
+
     <EntityLayout.Route if={isAdrAvailable} path="/adrs" title="ADRs">
       <EntityAdrContent />
     </EntityLayout.Route>
@@ -251,6 +256,10 @@ const websiteEntityPage = (
           <EntityDependsOnResourcesCard variant="gridItem" />
         </Grid>
       </Grid>
+    </EntityLayout.Route>
+
+    <EntityLayout.Route if={isQuayAvailable} path="/quay" title="Quay">
+      <QuayPage />
     </EntityLayout.Route>
 
   </EntityLayout>
