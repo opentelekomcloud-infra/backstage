@@ -35,6 +35,7 @@ import { DefaultIdentityClient } from '@backstage/plugin-auth-node';
 import techInsights from './plugins/techInsights';
 import adr from './plugins/adr';
 import explore from './plugins/explore';
+import kubernetes from './plugins/kubernetes';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -92,6 +93,7 @@ async function main() {
   const appEnv = useHotMemoize(module, () => createEnv('app'));
   const adrEnv = useHotMemoize(module, () => createEnv('adr'));
   const exploreEnv = useHotMemoize(module, () => createEnv('explore'));
+  const kubernetesEnv = useHotMemoize(module, () => createEnv('kubernetes'));
 
   const apiRouter = Router();
   apiRouter.use('/catalog', await catalog(catalogEnv));
@@ -103,6 +105,7 @@ async function main() {
   apiRouter.use('/tech-insights', await techInsights(techInsightsEnv));
   apiRouter.use('/adr', await adr(adrEnv));
   apiRouter.use('/explore', await explore(exploreEnv));
+  apiRouter.use('/kubernetes', await kubernetes(kubernetesEnv));
 
   // Add backends ABOVE this line; this 404 handler is the catch-all fallback
   apiRouter.use(notFoundHandler());

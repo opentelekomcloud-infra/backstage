@@ -77,6 +77,8 @@ import {
   isDependencytrackAvailable,
 } from '@trimm/plugin-dependencytrack';
 import { QuayPage, isQuayAvailable } from '@janus-idp/backstage-plugin-quay';
+import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
+
 
 const zuulContent = (
   <EntitySwitch>
@@ -233,6 +235,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route if={isAdrAvailable} path="/adrs" title="ADRs">
       <EntityAdrContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+      <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>
   </EntityLayout>
 );
