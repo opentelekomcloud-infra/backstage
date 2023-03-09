@@ -40,7 +40,7 @@
     "@backstage/plugin-tech-insights-backend-module-jsonfc": "^0.1.26",
     "@backstage/plugin-tech-insights-node": "^0.4.0",
     "@backstage/plugin-techdocs-backend": "^1.5.3",
-    "@janus-idp/backstage-plugin-keycloak-backend": "^1.0.3",
+    "@janus-idp/backstage-plugin-keycloak-backend": "^1.0.4",
     "app": "link:../app",
     "better-sqlite3": "^7.5.0",
     "dockerode": "^3.3.1",

@@ -34,12 +34,8 @@
     check:
       jobs:
         - backstage-build-image
-    check-post:
-      jobs:
-        - backstage-upload-image
     gate:
       jobs:
-        - backstage-build-image
         - backstage-upload-image
     release:
       jobs:
