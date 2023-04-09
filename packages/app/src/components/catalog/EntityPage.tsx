@@ -146,6 +146,11 @@ const overviewContent = (
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
+    <Grid item md={6}>
+      {/* Grafana alert card start */}
+      <EntityGrafanaDashboardsCard />
+      {/* Grafana alert card end */}
+    </Grid>
    <EntitySwitch>
       <EntitySwitch.Case if={e => Boolean(isGithubInsightsAvailable(e))}>
          <Grid item md={6}>
@@ -171,7 +176,7 @@ const overviewContent = (
       </EntitySwitch.Case>
     </EntitySwitch>
     <EntitySwitch>
-      <EntitySwitch.Case if={isDashboardSelectorAvailable}>
+      <EntitySwitch.Case if={e => Boolean(isDashboardSelectorAvailable(e))}>
          <Grid item md={6}>
           {/* Grafana alert card start */}
           <EntityGrafanaDashboardsCard />
