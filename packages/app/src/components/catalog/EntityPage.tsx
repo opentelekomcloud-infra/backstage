@@ -78,6 +78,7 @@ import {
 } from '@trimm/plugin-dependencytrack';
 import { QuayPage, isQuayAvailable } from '@janus-idp/backstage-plugin-quay';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
+import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
 
 
 const zuulContent = (
@@ -244,6 +245,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={30000} />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/topology" title="Topology">
+      <TopologyPage />
     </EntityLayout.Route>
   </EntityLayout>
 );
