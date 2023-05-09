@@ -15,3 +15,11 @@ yarn tsc
 yarn build:backend
 podman image build . -f packages/backend/Dockerfile --tag gitea.eco.tsi-dev.otc-service.com/backstage/backstage:$TAG
 ```
+
+# Update
+
+For updating dependencies execute:
+
+```sh
+yarn backstage-cli versions:bump --pattern '@{backstage,roadiehq,janus-idp,k-phoen,trimm}/*'
+```
