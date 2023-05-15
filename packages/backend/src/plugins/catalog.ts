@@ -22,6 +22,7 @@ export default async function createPlugin(
     }),
   );
   builder.addProcessor(new ScaffolderEntitiesProcessor());
+  // builder.setProcessingIntervalSeconds(10);
   const { processingEngine, router } = await builder.build();
   await processingEngine.start();
   return router;
