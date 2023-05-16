@@ -21,5 +21,5 @@ podman image build . -f packages/backend/Dockerfile --tag gitea.eco.tsi-dev.otc-
 For updating dependencies execute:
 
 ```sh
-yarn backstage-cli versions:bump --pattern '@{backstage,roadiehq,janus-idp,k-phoen,trimm}/*'
+yarn backstage-cli versions:bump --pattern '@{backstage,roadiehq,janus-idp,k-phoen,trimm,mdude2314}/*'
 ```
