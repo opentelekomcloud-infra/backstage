@@ -16,9 +16,10 @@ import {
   CacheManager,
   DatabaseManager,
   SingleHostDiscovery,
-  UrlReaders,
   ServerTokenManager,
 } from '@backstage/backend-common';
+import { OtcUrlReaders } from './UrlReaders';
+
 import { TaskScheduler } from '@backstage/backend-tasks';
 import { Config } from '@backstage/config';
 import app from './plugins/app';
@@ -39,7 +40,11 @@ import kubernetes from './plugins/kubernetes';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
-  const reader = UrlReaders.default({ logger: root, config });
+  const reader = OtcUrlReaders.default({
+    logger: root,
+    config,
+  });
+
   const discovery = SingleHostDiscovery.fromConfig(config);
   const cacheManager = CacheManager.fromConfig(config);
   const databaseManager = DatabaseManager.fromConfig(config, { logger: root });
@@ -84,7 +89,9 @@ async function main() {
   const createEnv = makeCreateEnv(config);
 
   const catalogEnv = useHotMemoize(module, () => createEnv('catalog'));
-  const techInsightsEnv = useHotMemoize(module, () => createEnv('tech_insights'));
+  const techInsightsEnv = useHotMemoize(module, () =>
+    createEnv('tech_insights'),
+  );
   const scaffolderEnv = useHotMemoize(module, () => createEnv('scaffolder'));
   const authEnv = useHotMemoize(module, () => createEnv('auth'));
   const proxyEnv = useHotMemoize(module, () => createEnv('proxy'));

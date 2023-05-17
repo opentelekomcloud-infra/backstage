@@ -4,7 +4,7 @@ import {
   createFactRetrieverRegistration,
   entityOwnershipFactRetriever,
   entityMetadataFactRetriever,
-//  techdocsFactRetriever,
+  //  techdocsFactRetriever,
 } from '@backstage/plugin-tech-insights-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';

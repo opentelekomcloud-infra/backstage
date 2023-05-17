@@ -17,7 +17,7 @@ export default async function createPlugin(
       schedule: env.scheduler.createScheduledTaskRunner({
         frequency: { minutes: 2 },
         timeout: { minutes: 50 },
-        initialDelay: { seconds: 15 }
+        initialDelay: { seconds: 15 },
       }),
     }),
   );

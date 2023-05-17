@@ -113,4 +113,3 @@ export const homePage = (
     </Content>
   </Page>
 );
-

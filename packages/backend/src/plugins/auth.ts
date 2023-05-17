@@ -6,7 +6,7 @@ import {
 import {
   createRouter,
   providers,
-  defaultAuthProviderFactories,
+  // defaultAuthProviderFactories,
 } from '@backstage/plugin-auth-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
@@ -21,13 +21,13 @@ export default async function createPlugin(
     discovery: env.discovery,
     tokenManager: env.tokenManager,
     providerFactories: {
-      ...defaultAuthProviderFactories,
+      // ...defaultAuthProviderFactories,
 
       //
       //   https://backstage.io/docs/auth/identity-resolver
       github: providers.github.create({
         signIn: {
-	  async resolver({ result: { fullProfile } }, ctx) {
+          async resolver({ result: { fullProfile } }, ctx) {
             const userId = fullProfile.username;
             if (!userId) {
               throw new Error(
@@ -54,7 +54,7 @@ export default async function createPlugin(
       oauth2Proxy: providers.oauth2Proxy.create({
         signIn: {
           async resolver({ result }, ctx) {
-            console.log(result);
+            console.log("Sign in with oauth2");
             const name = result.getHeader('x-forwarded-preferred-username');
             if (!name) {
               throw new Error('Request did not contain a user');
@@ -83,6 +83,24 @@ export default async function createPlugin(
             /* return ctx.signInWithCatalogUser({
               entityRef: { name },
             }); */
+          },
+        },
+      }),
+      gitea: providers.oauth2.create({
+        signIn: {
+          resolver(info, ctx) {
+            console.log(info.profile);
+            const userRef = stringifyEntityRef({
+              kind: 'User',
+              name: (info.profile.displayName = 'unknown'),
+              namespace: DEFAULT_NAMESPACE,
+            });
+            return ctx.issueToken({
+              claims: {
+                sub: userRef, // The user's own identity
+                ent: [userRef], // A list of identities that the user claims ownership through
+              },
+            });
           },
         },
       }),

@@ -77,10 +77,7 @@ export class CicdStatisticsApiZuul implements CicdStatisticsApi {
   }
 
   public async fetchBuilds(options: FetchBuildsOptions): Promise<CicdState> {
-    const {
-      entity,
-      updateProgress,
-    } = options;
+    const { entity, updateProgress } = options;
     updateProgress(0, 0, 0);
     if (
       !entity ||
