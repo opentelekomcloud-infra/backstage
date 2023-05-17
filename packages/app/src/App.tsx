@@ -14,13 +14,14 @@ import { ScaffolderPage, scaffolderPlugin } from '@backstage/plugin-scaffolder';
 import { orgPlugin } from '@backstage/plugin-org';
 import { SearchPage } from '@backstage/plugin-search';
 import { TechRadarPage } from '@backstage/plugin-tech-radar';
-/* import {
+import {
+  DefaultTechDocsHome,
   TechDocsIndexPage,
-  techdocsPlugin,
+/*  techdocsPlugin,*/
   TechDocsReaderPage,
 } from '@backstage/plugin-techdocs';
-import { TechDocsAddons } from '@backstage/plugin-techdocs-react'; */
-/* import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib'; */
+/*import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
+import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';*/
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
 import { apis } from './apis';
 import { entityPage } from './components/catalog/EntityPage';
@@ -109,6 +110,13 @@ const routes = (
     </Route>
     <Route path="/create" element={<ScaffolderPage />} />
     <Route path="/api-docs" element={<ApiExplorerPage />} />
+    <Route path="/docs" element={<TechDocsIndexPage />}>
+      <DefaultTechDocsHome />
+    </Route>
+    <Route
+      path="/docs/:namespace/:kind/:name/*"
+      element={<TechDocsReaderPage />}
+    />
     <Route
       path="/tech-radar"
       element={<TechRadarPage width={1500} height={800} />}
