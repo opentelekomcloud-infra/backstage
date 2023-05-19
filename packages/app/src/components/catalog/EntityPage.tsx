@@ -1,7 +1,7 @@
 import React from 'react';
-import { 
-//  Button, 
-  Grid 
+import {
+  //  Button,
+  Grid,
 } from '@material-ui/core';
 import {
   EntityApiDefinitionCard,
@@ -51,11 +51,13 @@ import {
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
 
-
 import { EntityCicdStatisticsContent } from '@backstage/plugin-cicd-statistics';
 import { isZuulAvailable } from '@internal/backstage-plugin-cicd-statistics-module-zuul';
 
-import { isDashboardSelectorAvailable, EntityGrafanaDashboardsCard } from '@k-phoen/backstage-plugin-grafana';
+import {
+  isDashboardSelectorAvailable,
+  EntityGrafanaDashboardsCard,
+} from '@k-phoen/backstage-plugin-grafana';
 
 import { EntityTechInsightsScorecardContent } from '@backstage/plugin-tech-insights';
 import { EntityAdrContent, isAdrAvailable } from '@backstage/plugin-adr';
@@ -79,7 +81,6 @@ import {
 import { QuayPage, isQuayAvailable } from '@janus-idp/backstage-plugin-quay';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 import { TopologyPage } from '@janus-idp/backstage-plugin-topology';
-
 
 const zuulContent = (
   <EntitySwitch>
@@ -152,12 +153,12 @@ const overviewContent = (
       <EntityGrafanaDashboardsCard />
       {/* Grafana alert card end */}
     </Grid>
-   <EntitySwitch>
+    <EntitySwitch>
       <EntitySwitch.Case if={e => Boolean(isGithubInsightsAvailable(e))}>
-         <Grid item md={6}>
-           <EntityGithubPullRequestsOverviewCard />
-         </Grid>
-         <Grid item md={6}>
+        <Grid item md={6}>
+          <EntityGithubPullRequestsOverviewCard />
+        </Grid>
+        <Grid item md={6}>
           <EntityGithubInsightsLanguagesCard />
           <EntityGithubInsightsReleasesCard />
         </Grid>
@@ -178,14 +179,14 @@ const overviewContent = (
     </EntitySwitch>
     <EntitySwitch>
       <EntitySwitch.Case if={e => Boolean(isDashboardSelectorAvailable(e))}>
-         <Grid item md={6}>
+        <Grid item md={6}>
           {/* Grafana alert card start */}
           <EntityGrafanaDashboardsCard />
           {/* Grafana alert card end */}
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
-   </Grid>
+  </Grid>
 );
 
 const serviceEntityPage = (
@@ -277,7 +278,6 @@ const websiteEntityPage = (
     <EntityLayout.Route if={isQuayAvailable} path="/quay" title="Quay">
       <QuayPage />
     </EntityLayout.Route>
-
   </EntityLayout>
 );
 
@@ -332,8 +332,7 @@ const defaultEntityPage = (
     <EntityLayout.Route path="/zuul" title="Zuul CI/CD">
       {zuulContent}
     </EntityLayout.Route>
-
- </EntityLayout>
+  </EntityLayout>
 );
 
 const componentPage = (

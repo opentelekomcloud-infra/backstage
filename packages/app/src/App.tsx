@@ -17,13 +17,14 @@ import { TechRadarPage } from '@backstage/plugin-tech-radar';
 import {
   DefaultTechDocsHome,
   TechDocsIndexPage,
-/*  techdocsPlugin,*/
+  /*  techdocsPlugin,*/
   TechDocsReaderPage,
 } from '@backstage/plugin-techdocs';
 /*import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';*/
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
-import { apis } from './apis';
+// import { UserSettingsPage } from '@internal/plugin-user-settings';
+import { giteaOauth2AuthApiRef, apis } from './apis';
 import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
 import { Root } from './components/Root';
@@ -35,7 +36,11 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
-import { configApiRef, githubAuthApiRef, useApi } from '@backstage/core-plugin-api';
+import {
+  configApiRef,
+  githubAuthApiRef,
+  useApi,
+} from '@backstage/core-plugin-api';
 import { SignInPage, ProxiedSignInPage } from '@backstage/core-components';
 import { ExplorePage /* , explorePlugin */ } from '@backstage/plugin-explore';
 
@@ -55,29 +60,25 @@ const app = createApp({
           <SignInPage
             {...props}
             auto
-            provider={{
-              id: 'github-auth-provider',
-              title: 'GitHub',
-              message: 'Sign in using GitHub',
-              apiRef: githubAuthApiRef,
-            }}
+            providers={[
+              {
+                id: 'github-auth-provider',
+                title: 'GitHub',
+                message: 'Sign in using GitHub',
+                apiRef: githubAuthApiRef,
+              },
+              {
+                id: 'gitea-auth-provider',
+                title: 'Gitea',
+                message: 'Sign in using Gitea',
+                apiRef: giteaOauth2AuthApiRef,
+              },
+            ]}
           />
         );
       }
       return <ProxiedSignInPage {...props} provider="oauth2Proxy" />;
-    }
-    /* SignInPage: props => (
-      <SignInPage
-        {...props}
-        auto
-        provider={{
-          id: 'github-auth-provider',
-          title: 'GitHub',
-          message: 'Sign in using GitHub',
-          apiRef: githubAuthApiRef,
-        }}
-      />
-    ), */
+    },
   },
   bindRoutes({ bind }) {
     bind(catalogPlugin.externalRoutes, {
@@ -100,7 +101,8 @@ const routes = (
   <FlatRoutes>
     <Route path="/" element={<HomepageCompositionRoot />}>
       {homePage}
-    </Route>;
+    </Route>
+    ;
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"
