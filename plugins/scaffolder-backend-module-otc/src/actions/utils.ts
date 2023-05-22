@@ -53,6 +53,30 @@ function checkRequiredParams(repoUrl: URL, ...params: string[]) {
   }
 }
 
+export async function cloneRepo({
+  dir,
+  auth,
+  logger,
+  remoteRef,
+  repoUrl,
+}: {
+  dir: string;
+  // For use cases where token has to be used with Basic Auth
+  // it has to be provided as password together with a username
+  // which may be a fixed value defined by the provider.
+  auth: { username: string; password: string } | { token: string };
+  logger: Logger;
+  remoteRef?: string;
+  repoUrl: string;
+}): Promise<any> {
+  const git = Git.fromAuth({
+    ...auth,
+    logger,
+  });
+
+  await git.clone({ url: repoUrl, dir, ref: remoteRef });
+}
+
 export async function commitAndPushRepo({
   dir,
   auth,
@@ -79,6 +103,7 @@ export async function commitAndPushRepo({
   });
 
   await git.fetch({ dir });
+  await git.branch({ dir, ref: branchName });
   await git.checkout({ dir, ref: branchName });
   await git.add({ dir, filepath: '.' });
 
