@@ -38,7 +38,10 @@ import {
   gitCloneAction,
   gitAction,
 } from '@mdude2314/backstage-plugin-scaffolder-git-actions';
-import { createPublishGiteaPullRequestAction } from '@internal/scaffolder-backend-module-otc';
+import {
+  createGiteaCloneAction,
+  createPublishGiteaPullRequestAction,
+} from '@internal/scaffolder-backend-module-otc';
 
 export default async function createPlugin(
   env: PluginEnvironment,
@@ -72,6 +75,7 @@ export default async function createPlugin(
     gitAction(),
     gitCloneAction(),
     createPublishGiteaPullRequestAction({ integrations, config }),
+    createGiteaCloneAction({ integrations }),
   ];
 
   return await createRouter({

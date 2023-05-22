@@ -25,7 +25,7 @@ import {
 } from './utils';
 
 /**
- * Create a new action that creates a gitlab pull request.
+ * Create a new action that creates a gitea pull request.
  *
  * @public
  */
@@ -53,7 +53,7 @@ export const createPublishGiteaPullRequestAction = (options: {
           repoUrl: {
             type: 'string',
             title: 'Repository Location',
-            description: `Accepts the format 'gitlab.com/group_name/project_name' where 'project_name' is the repository name and 'group_name' is a group or username`,
+            description: `Accepts the format 'gitea.com?owner=org&repo=project_name' where 'project_name' is the repository name and 'owner' is a group or username`,
           },
           title: {
             type: 'string',
@@ -111,12 +111,7 @@ export const createPublishGiteaPullRequestAction = (options: {
         commitMessage,
       } = ctx.input;
 
-      ctx.logger.info(repoUrl);
-      ctx.logger.info(integrations);
-      const { host, owner, repo } = parseRepoUrl(
-        repoUrl,
-        // integrations,
-      );
+      const { host, owner, repo } = parseRepoUrl(repoUrl);
 
       const integrationConfig = integrations.gitea.byHost(host);
 
@@ -139,10 +134,9 @@ export const createPublishGiteaPullRequestAction = (options: {
         dir: getRepoSourceDirectory(ctx.workspacePath, sourcePath),
         auth,
         logger: ctx.logger,
-        commitMessage,
+        commitMessage: commitMessage ?? title,
         gitAuthorInfo,
         branchName,
-        remoteRef: `refs/heads/${branchName}`,
       });
 
       try {
@@ -176,7 +170,7 @@ export const createPublishGiteaPullRequestAction = (options: {
           throw new Error(message);
         }
         const pr_data = await response.json();
-        ctx.logger.info(pr_data);
+        ctx.logger?.info(`Review available on ${pr_data.url}`);
         ctx.output('pullRequestUrl', pr_data.url);
       } catch (e) {
         throw new InputError(`Pull request creation failed ${e}`);

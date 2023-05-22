@@ -138,6 +138,7 @@ export class OtcGiteaUrlReader /*extends GiteaUrlReader */
     const baseUrl = config.baseUrl ?? `https://${config.host}`;
     const [_blank, owner, name, _src, _branch, ref, ...path] = url
       .replace(baseUrl, '')
+      .replace(/.git$/, '')
       .split('/');
 
     const repoDetails = await this.getRepoDetails(url);
@@ -181,6 +182,7 @@ export class OtcGiteaUrlReader /*extends GiteaUrlReader */
     const apiBaseUrl = `${baseUrl}/api/v1`;
     const [_blank, owner, name, _src, _branch, ref] = url
       .replace(baseUrl, '')
+      .replace(/.git$/, '')
       .split('/');
 
     const repo = await this.fetchJson(
