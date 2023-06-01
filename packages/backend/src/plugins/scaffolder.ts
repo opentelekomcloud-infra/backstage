@@ -40,6 +40,7 @@ import {
 } from '@mdude2314/backstage-plugin-scaffolder-git-actions';
 import {
   createGiteaCloneAction,
+  createPublishGiteaAction,
   createPublishGiteaPullRequestAction,
 } from '@internal/scaffolder-backend-module-otc';
 
@@ -74,6 +75,7 @@ export default async function createPlugin(
     createJsonJSONataTransformAction(),
     gitAction(),
     gitCloneAction(),
+    createPublishGiteaAction({ integrations, config }),
     createPublishGiteaPullRequestAction({ integrations, config }),
     createGiteaCloneAction({ integrations }),
   ];

@@ -51,7 +51,8 @@ export const createGiteaCloneAction = (options: {
           workingDirectory: {
             type: 'string',
             title: 'Working directory',
-            description: 'Working directory within the scaffolder workspace to execute the command in',
+            description:
+              'Working directory within the scaffolder workspace to execute the command in',
           },
         },
       },
@@ -61,7 +62,7 @@ export const createGiteaCloneAction = (options: {
       },
     },
     async handler(ctx) {
-      const { repoUrl, branchName =  'main', workingDirectory} = ctx.input;
+      const { repoUrl, branchName = 'main', workingDirectory } = ctx.input;
 
       const { host, owner, repo } = parseRepoUrl(repoUrl);
 
