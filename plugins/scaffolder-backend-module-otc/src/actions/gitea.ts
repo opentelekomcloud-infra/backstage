@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { NotFoundError } from '@backstage/errors';
+import { NotFoundError, ConflictError } from '@backstage/errors';
 import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
 import { ScmIntegrationRegistry } from '@backstage/integration';
 import { Config } from '@backstage/config';
@@ -20,16 +20,16 @@ import { InputError } from '@backstage/errors';
 
 import {
   parseRepoUrl,
-  commitAndPushRepo,
+  initRepoAndPush,
   getRepoSourceDirectory,
 } from './utils';
 
 /**
- * Create a new action that creates a gitea pull request.
+ * Create a new action that creates a gitea repository.
  *
  * @public
  */
-export const createPublishGiteaPullRequestAction = (options: {
+export const createPublishGiteaAction = (options: {
   integrations: ScmIntegrationRegistry;
   config: Config;
 }) => {
@@ -37,17 +37,15 @@ export const createPublishGiteaPullRequestAction = (options: {
 
   return createTemplateAction<{
     repoUrl: string;
-    title: string;
-    description: string;
-    branchName: string;
+    description?: string;
+    defaultBranch?: string;
+    gitCommitMessage?: string;
     sourcePath?: string;
-    targetPath?: string;
-    commitMessage: string;
   }>({
-    id: 'publish:gitea:pull-request',
+    id: 'publish:gitea',
     schema: {
       input: {
-        required: ['repoUrl', 'branchName'],
+        required: ['repoUrl'],
         type: 'object',
         properties: {
           repoUrl: {
@@ -55,17 +53,12 @@ export const createPublishGiteaPullRequestAction = (options: {
             title: 'Repository Location',
             description: `Accepts the format 'gitea.com?owner=org&repo=project_name' where 'project_name' is the repository name and 'owner' is a group or username`,
           },
-          title: {
-            type: 'string',
-            title: 'Pull Request Name',
-            description: 'The name for the pull request',
-          },
           description: {
             type: 'string',
-            title: 'Pull Request Description',
-            description: 'The description of the pull request',
+            title: 'Repository Request Description',
+            description: 'The description of the repository',
           },
-          branchName: {
+          defaultBranch: {
             type: 'string',
             title: 'Destination Branch name',
             description: 'Branch name containing changes',
@@ -76,12 +69,7 @@ export const createPublishGiteaPullRequestAction = (options: {
             description:
               'Subdirectory of working directory to copy changes from',
           },
-          targetPath: {
-            type: 'string',
-            title: 'Repository Subdirectory',
-            description: 'Subdirectory of repository to apply changes to',
-          },
-          commitMessage: {
+          gitCommitMessage: {
             title: 'Git Commit Message',
             type: 'string',
             description: `Sets the commit message on the repository.`,
@@ -91,22 +79,21 @@ export const createPublishGiteaPullRequestAction = (options: {
       output: {
         type: 'object',
         properties: {
-          pullRequestUrl: {
-            title: 'PullRequest(PR) URL',
+          remoteUrl: {
+            title: 'Remote URL',
             type: 'string',
-            description: 'Link to the pull request in Gitea',
+            description: 'Link to the repository in Gitea',
           },
         },
       },
     },
     async handler(ctx) {
       const {
-        branchName,
-        description,
         repoUrl,
+        description,
+        defaultBranch = 'main',
         sourcePath,
-        title,
-        commitMessage,
+        gitCommitMessage,
       } = ctx.input;
 
       const { host, owner, repo } = parseRepoUrl(repoUrl);
@@ -128,29 +115,20 @@ export const createPublishGiteaPullRequestAction = (options: {
         email: config.getOptionalString('scaffolder.defaultAuthor.email'),
       };
 
-      await commitAndPushRepo({
-        dir: getRepoSourceDirectory(ctx.workspacePath, sourcePath),
-        auth,
-        logger: ctx.logger,
-        commitMessage: commitMessage ?? title,
-        gitAuthorInfo,
-        branchName,
-      });
-
       try {
         const baseUrl =
           integrationConfig.config.baseUrl ??
           `https://${integrationConfig.config.host}`;
         const apiBaseUrl = `${baseUrl}/api/v1`;
 
-        const post_url = `${apiBaseUrl}/repos/${owner}/${repo}/pulls`;
+        const post_url = `${apiBaseUrl}/orgs/${owner}/repos`;
         const response = await fetch(post_url, {
           method: 'POST',
           body: JSON.stringify({
-            title: title,
-            body: description,
-            head: branchName,
-            base: 'main',
+            auto_init: false,
+            name: repo,
+            default_branch: defaultBranch,
+            description: description,
           }),
           headers: {
             'Content-Type': 'application/json',
@@ -162,16 +140,31 @@ export const createPublishGiteaPullRequestAction = (options: {
           const message = `Request failed for ${post_url}, ${response.status} ${response.statusText}`;
           if (response.status === 404) {
             throw new NotFoundError(message);
+          } else if (response.status === 409) {
+            const message = `Repository ${repo} already exists`;
+            throw new ConflictError(message);
           }
           const errorBody = await response.text();
           ctx.logger.error(errorBody);
           throw new Error(message);
         }
-        const pr_data = await response.json();
-        ctx.logger?.info(`Review available on ${pr_data.url}`);
-        ctx.output('pullRequestUrl', pr_data.url);
+        const repo_data = await response.json();
+        await initRepoAndPush({
+          dir: getRepoSourceDirectory(ctx.workspacePath, sourcePath),
+          remoteUrl: repo_data.clone_url,
+          auth,
+          defaultBranch,
+          logger: ctx.logger,
+          commitMessage: gitCommitMessage
+            ? gitCommitMessage
+            : config.getOptionalString('scaffolder.defaultCommitMessage'),
+          gitAuthorInfo,
+        });
+
+        ctx.logger?.info(`Repository available on ${repo_data.html_url}`);
+        ctx.output('repositoryUrl', repo_data.html_url);
       } catch (e) {
-        throw new InputError(`Pull request creation failed ${e}`);
+        throw new InputError(`Repository creation failed ${e}`);
       }
     },
   });
