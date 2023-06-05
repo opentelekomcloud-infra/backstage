@@ -35,10 +35,6 @@ import {
   createJsonJSONataTransformAction,
 } from '@roadiehq/scaffolder-backend-module-utils';
 import {
-  gitCloneAction,
-  gitAction,
-} from '@mdude2314/backstage-plugin-scaffolder-git-actions';
-import {
   createGiteaCloneAction,
   createPublishGiteaAction,
   createPublishGiteaPullRequestAction,
@@ -73,8 +69,6 @@ export default async function createPlugin(
     createJSONataAction(),
     createYamlJSONataTransformAction(),
     createJsonJSONataTransformAction(),
-    gitAction(),
-    gitCloneAction(),
     createPublishGiteaAction({ integrations, config }),
     createPublishGiteaPullRequestAction({ integrations, config }),
     createGiteaCloneAction({ integrations }),
