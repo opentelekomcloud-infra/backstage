@@ -1,5 +1,5 @@
 # Stage 1 - Create yarn install skeleton layer
-FROM node:18-bullseye-slim AS packages
+FROM node:16-bullseye-slim AS packages
 
 WORKDIR /app
 COPY package.json yarn.lock ./
