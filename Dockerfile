@@ -33,6 +33,9 @@ WORKDIR /app
 
 COPY --from=packages --chown=node:node /app .
 
+ENV CYPRESS_CACHE_FOLDER /app/cypress_cache
+RUN mkdir -p /app/cypress_cache && chown -R node:node /app/cypress_cache
+
 RUN --mount=type=cache,target=/home/node/.cache/yarn,sharing=locked,uid=1000,gid=1000 \
     yarn install --frozen-lockfile --network-timeout 600000
 
@@ -76,6 +79,8 @@ WORKDIR /app
 
 # Copy the install dependencies from the build stage and context
 COPY --from=build --chown=node:node /app/yarn.lock /app/package.json /app/packages/backend/dist/skeleton/ ./
+
+RUN mkdir -p /app/cypress_cache && chown -R node:node /app/cypress_cache
 
 RUN --mount=type=cache,target=/home/node/.cache/yarn,sharing=locked,uid=1000,gid=1000 \
     yarn install --frozen-lockfile --production --network-timeout 600000
