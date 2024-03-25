@@ -2797,7 +2797,7 @@
     winston "^3.2.1"
     zod "^3.22.4"
 
-"@backstage/catalog-client@^1.6.2":
+"@backstage/catalog-client@^1.6.0", "@backstage/catalog-client@^1.6.2":
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/@backstage/catalog-client/-/catalog-client-1.6.2.tgz#862db5b1b07f77acd13039ca56b83650cd8362d6"
   integrity sha512-26ZN+NmBpjxJgzd1dlO6JT497U9eMrsFORKNE7EvbUYXXJh4zVZSy+NaA1hNqNtbTzmEvvc8IAKQRG7x5UmnVw==
@@ -7949,6 +7949,21 @@
     lodash "^4.17.21"
     lodash-es "^4.17.21"
 
+"@roadiehq/backstage-plugin-argo-cd-backend@^2.14.6":
+  version "2.14.6"
+  resolved "https://registry.yarnpkg.com/@roadiehq/backstage-plugin-argo-cd-backend/-/backstage-plugin-argo-cd-backend-2.14.6.tgz#18a1d5d58578a23e9f61a4a7585b88e51ca9b17b"
+  integrity sha512-t5dTsIpZiQJUVihinOy/cT39AivkG72sGCScYLzmVxH1m+CfUKE5KLsoLL6ftn3qGBrA26H3QvruX/MljnM72w==
+  dependencies:
+    "@backstage/backend-common" "^0.21.3"
+    "@backstage/catalog-client" "^1.6.0"
+    "@backstage/config" "^1.1.1"
+    "@types/express" "^4.17.6"
+    cross-fetch "^3.1.4"
+    express "^4.17.1"
+    express-promise-router "^4.1.0"
+    winston "^3.2.1"
+    yn "^4.0.0"
+
 "@roadiehq/backstage-plugin-github-insights@^2.3.27":
   version "2.3.27"
   resolved "https://registry.yarnpkg.com/@roadiehq/backstage-plugin-github-insights/-/backstage-plugin-github-insights-2.3.27.tgz#edf6f8a235eef1017483800a94502bf9a16b662e"
@@ -7993,6 +8008,17 @@
     msw "^1.0.1"
     node-fetch "^2.6.1"
     react-use "^17.2.4"
+
+"@roadiehq/scaffolder-backend-argocd@^1.1.24":
+  version "1.1.24"
+  resolved "https://registry.yarnpkg.com/@roadiehq/scaffolder-backend-argocd/-/scaffolder-backend-argocd-1.1.24.tgz#35a6d65ead1a5defecf73d806f704c6bedbb7fca"
+  integrity sha512-7RePs4ISh2sQ8ZQhLP+YaXFCBnOMfJ54iD2+3Ddtc0ED2K2eciBz6IrTpboNoat106fqo97rwml5pgR0VHaqRw==
+  dependencies:
+    "@backstage/backend-common" "^0.21.3"
+    "@backstage/config" "^1.1.1"
+    "@backstage/plugin-scaffolder-backend" "^1.21.3"
+    "@roadiehq/backstage-plugin-argo-cd-backend" "^2.14.6"
+    winston "^3.2.1"
 
 "@roadiehq/scaffolder-backend-module-http-request@^4.1.9":
   version "4.1.9"
@@ -9986,7 +10012,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@*", "@types/react-dom@<18.0.0", "@types/react-dom@^17":
+"@types/react-dom@*", "@types/react-dom@<18.0.0":
   version "17.0.20"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.20.tgz#e0c8901469d732b36d8473b40b679ad899da1b53"
   integrity sha512-4pzIjSxDueZZ90F52mU3aPoogkHIoSIDG+oQ+wQK7Cy2B9S+MvOqY0uEA/qawKz381qrEDkvpwyt8Bm31I8sbA==
@@ -11979,14 +12005,9 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001400:
-  version "1.0.30001445"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001445.tgz#cf2d4eb93f2bcdf0310de9dd6d18be271bc0b447"
-  integrity sha512-8sdQIdMztYmzfTMO6KfLny878Ln9c2M0fc7EH60IjlP4Dc4PiCy7K2Vl3ITmWgOyPgVQKa5x+UP/KqFsxj4mBg==
-
-caniuse-lite@^1.0.30001587:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001587:
   version "1.0.30001600"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001600.tgz#93a3ee17a35aa6a9f0c6ef1b2ab49507d1ab9079"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001600.tgz"
   integrity sha512-+2S9/2JFhYmYaDpZvo0lKkfvuKIglrx68MwOBqMGHhQsNkLjB5xtc/TGoEPs+MxjSyN/72qer2g97nzR641mOQ==
 
 caseless@~0.12.0:
