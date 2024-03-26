@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1.2
+
 # Stage 1 - Create yarn install skeleton layer
 FROM node:18-bookworm-slim AS packages
 
