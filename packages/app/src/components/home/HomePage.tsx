@@ -17,8 +17,8 @@
 import {
   HomePageRandomJoke,
   ComponentAccordion,
-  ComponentTabs,
-  ComponentTab,
+  // ComponentTabs,
+  // ComponentTab,
   WelcomeTitle,
   HeaderWorldClock,
   ClockConfig,
@@ -78,7 +78,7 @@ export const homePage = (
             Renderer={ComponentAccordion}
           />
         </Grid>
-        <Grid item xs={12} md={4}>
+        {/* <Grid item xs={12} md={4}>
           <ComponentTabs
             title="Random Jokes"
             tabs={[
@@ -102,7 +102,7 @@ export const homePage = (
               },
             ]}
           />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} md={4}>
           <HomePageCalendar />
         </Grid>

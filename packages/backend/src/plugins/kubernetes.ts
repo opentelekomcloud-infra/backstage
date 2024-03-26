@@ -8,6 +8,7 @@ export default async function createPlugin(
 ): Promise<Router> {
   const catalogApi = new CatalogClient({ discoveryApi: env.discovery });
   const { router } = await KubernetesBuilder.createBuilder({
+    discovery: env.discovery,
     logger: env.logger,
     config: env.config,
     catalogApi,
