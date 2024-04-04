@@ -69,7 +69,7 @@ export default async function createPlugin(
     createJSONataAction(),
     createYamlJSONataTransformAction(),
     createJsonJSONataTransformAction(),
-    createPublishGiteaAction({ integrations, config }),
+    // createPublishGiteaAction({ integrations, config }),
     createPublishGiteaPullRequestAction({ integrations, config }),
     createGiteaCloneAction({ integrations }),
   ];
