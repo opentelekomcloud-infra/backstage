@@ -36,7 +36,7 @@ import {
 } from '@roadiehq/scaffolder-backend-module-utils';
 import {
   createGiteaCloneAction,
-  createPublishGiteaAction,
+  // createPublishGiteaAction,
   createPublishGiteaPullRequestAction,
 } from '@internal/scaffolder-backend-module-otc';
 

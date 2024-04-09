@@ -3813,6 +3813,25 @@
     zen-observable "^0.10.0"
     zod "^3.22.4"
 
+"@backstage/core-app-api@^1.12.3":
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/@backstage/core-app-api/-/core-app-api-1.12.3.tgz#f26de4203034edd4401c0b00bbd978f1bb45520a"
+  integrity sha512-01Cjg9I8axwXSyKOp/eHTRCug9nBc8YJyJ85gJyKgFnXsMbP1mRCgqduurCUOAVy2St0r3kXbf8DAFqCKUfOKQ==
+  dependencies:
+    "@backstage/config" "^1.2.0"
+    "@backstage/core-plugin-api" "^1.9.1"
+    "@backstage/types" "^1.1.1"
+    "@backstage/version-bridge" "^1.0.7"
+    "@types/prop-types" "^15.7.3"
+    "@types/react" "^16.13.1 || ^17.0.0 || ^18.0.0"
+    history "^5.0.0"
+    i18next "^22.4.15"
+    lodash "^4.17.21"
+    prop-types "^15.7.2"
+    react-use "^17.2.4"
+    zen-observable "^0.10.0"
+    zod "^3.22.4"
+
 "@backstage/core-compat-api@^0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@backstage/core-compat-api/-/core-compat-api-0.2.2.tgz#e30d863a0edbcc4abc4ea3918b416e432e58e1e0"
@@ -5739,6 +5758,25 @@
   dependencies:
     "@backstage/config" "^1.2.0"
     "@backstage/core-app-api" "^1.12.2"
+    "@backstage/core-plugin-api" "^1.9.1"
+    "@backstage/plugin-permission-common" "^0.7.13"
+    "@backstage/plugin-permission-react" "^0.4.21"
+    "@backstage/theme" "^0.5.2"
+    "@backstage/types" "^1.1.1"
+    "@material-ui/core" "^4.12.2"
+    "@material-ui/icons" "^4.9.1"
+    "@types/react" "^16.13.1 || ^17.0.0 || ^18.0.0"
+    cross-fetch "^4.0.0"
+    i18next "^22.4.15"
+    zen-observable "^0.10.0"
+
+"@backstage/test-utils@^1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@backstage/test-utils/-/test-utils-1.5.3.tgz#1f5bfb0eb6420433dcae400e24df214aba23f4a7"
+  integrity sha512-L/hjmy8l9wUtiPTx8kssMjH0CJzeqy933gKh3P/scct+6X7VJRrdn03t/FQlipaeWkMJzT9PZ5q9MXWtZ8ubow==
+  dependencies:
+    "@backstage/config" "^1.2.0"
+    "@backstage/core-app-api" "^1.12.3"
     "@backstage/core-plugin-api" "^1.9.1"
     "@backstage/plugin-permission-common" "^0.7.13"
     "@backstage/plugin-permission-react" "^0.4.21"
@@ -11315,7 +11353,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-dom@*", "@types/react-dom@<18.0.0":
+"@types/react-dom@*", "@types/react-dom@<18.0.0", "@types/react-dom@^17":
   version "17.0.25"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.25.tgz#e0e5b3571e1069625b3a3da2b279379aa33a0cb5"
   integrity sha512-urx7A7UxkZQmThYA4So0NelOVjx3V4rNFVJwp0WZlbIK5eM4rNJDiN3R/E9ix0MBh6kAEojk/9YL+Te6D9zHNA==
