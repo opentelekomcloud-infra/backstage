@@ -36,7 +36,7 @@ import {
 } from '@roadiehq/scaffolder-backend-module-utils';
 import {
   createGiteaCloneAction,
-  // createPublishGiteaAction,
+  createPublishGiteaAction,
   createPublishGiteaPullRequestAction,
 } from '@internal/scaffolder-backend-module-otc';
 
@@ -69,7 +69,7 @@ export default async function createPlugin(
     createJSONataAction(),
     createYamlJSONataTransformAction(),
     createJsonJSONataTransformAction(),
-    // createPublishGiteaAction({ integrations, config }),
+    createPublishGiteaAction({ integrations, config }),
     createPublishGiteaPullRequestAction({ integrations, config }),
     createGiteaCloneAction({ integrations }),
   ];

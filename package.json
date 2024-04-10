@@ -57,6 +57,7 @@
     "@backstage/backend-dynamic-feature-service": "0.1.0",
     "@backstage/test-utils": "^1.5.3",
     "@types/passport-oauth2": "^1.4.12",
+    "@types/react": "^17",
     "passport-oauth2": "^1.7.0"
   },
   "files": [
