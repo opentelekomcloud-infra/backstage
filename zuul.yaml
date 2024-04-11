@@ -1,14 +1,14 @@
 ---
-
 - job:
     name: backstage-build-image
     parent: otc-build-container-image
     description: Build backstage container image
-    provides: backstage-container-image
+    provides:
+      backstage-container-image
       #pre-run:
       #- playbooks/pre.yaml
-        # run:
-        # - playbooks/run.yaml
+      # run:
+      # - playbooks/run.yaml
     vars: &backstage_image_vars
       container_images:
         - context: .

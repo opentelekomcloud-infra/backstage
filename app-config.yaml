@@ -69,17 +69,17 @@ catalog:
   rules:
     - allow: [Component, System, API, Resource, Location, Group, User]
   # locations:
-    # General
-    #    - type: url
-    #      target: https://gitea.eco.tsi-dev.otc-service.com/backstage/catalog/contents/blob/main/otc-catalog.yaml
-    #      rules:
-    #        - allow: [Domain, Group, User, Location, Component, Resource, API, System]
-    #    # Compute
-    #    - type: url
-    #      target: https://gitea.eco.tsi-dev.otc-service.com/backstage/catalog-compute/contents/blob/main/catalog.yaml
-    #    # Ecosystem
-    #    - type: url
-    #      target: https://gitea.eco.tsi-dev.otc-service.com/backstage/catalog-ecosystem/contents/blob/main/catalog.yaml
+  # General
+  #    - type: url
+  #      target: https://gitea.eco.tsi-dev.otc-service.com/backstage/catalog/contents/blob/main/otc-catalog.yaml
+  #      rules:
+  #        - allow: [Domain, Group, User, Location, Component, Resource, API, System]
+  #    # Compute
+  #    - type: url
+  #      target: https://gitea.eco.tsi-dev.otc-service.com/backstage/catalog-compute/contents/blob/main/catalog.yaml
+  #    # Ecosystem
+  #    - type: url
+  #      target: https://gitea.eco.tsi-dev.otc-service.com/backstage/catalog-ecosystem/contents/blob/main/catalog.yaml
 dependencytrack:
   baseUrl: https://dependencytrack.eco.tsi-dev.otc-service.com
 
@@ -94,17 +94,17 @@ organization:
   name: Open Telekom Cloud
 
 proxy:
-  "/zuul":
-    target: "https://zuul.otc-service.com/api"
+  '/zuul':
+    target: 'https://zuul.otc-service.com/api'
   '/grafana/api':
     target: https://dashboard.tsi-dev.otc-service.com
     headers:
-      Authorization: "${GRAFANA_TOKEN}"
+      Authorization: '${GRAFANA_TOKEN}'
   '/dependencytrack':
     target: https://dependencytrack.eco.tsi-dev.otc-service.com
     allowedMethods: ['GET']
     headers:
-      X-Api-Key: "${DEPENDENCYTRACK_TOKEN}"
+      X-Api-Key: '${DEPENDENCYTRACK_TOKEN}'
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
@@ -114,8 +114,8 @@ scaffolder:
 # and an external cloud storage when deploying TechDocs for production use-case.
 # https://backstage.io/docs/features/techdocs/how-to-guides#how-to-migrate-from-techdocs-basic-to-recommended-deployment-approach
 techdocs:
-  builder: 'local'  # Alternatives - 'external'
+  builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'local'  # Alternatives - 'docker'
+    runIn: 'local' # Alternatives - 'docker'
   publisher:
-    type: 'local'  # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
+    type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
