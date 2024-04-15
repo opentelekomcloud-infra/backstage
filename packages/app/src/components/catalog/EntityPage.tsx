@@ -2,7 +2,7 @@ import React from 'react';
 import {
   //  Button,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 import {
   EntityApiDefinitionCard,
   EntityConsumedApisCard,
