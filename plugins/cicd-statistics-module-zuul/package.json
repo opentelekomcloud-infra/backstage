@@ -23,14 +23,14 @@
   },
   "dependencies": {
     "@backstage/catalog-model": "^1.4.5",
-    "@backstage/core-plugin-api": "^1.9.1",
+    "@backstage/core-plugin-api": "^1.9.2",
     "@backstage/errors": "^1.2.4",
-    "@backstage/plugin-cicd-statistics": "^0.1.34",
+    "@backstage/plugin-cicd-statistics": "^0.1.37",
     "luxon": "^3.0.0",
     "p-limit": "^4.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.26.1"
+    "@backstage/cli": "^0.26.4"
   },
   "files": [
     "dist"
