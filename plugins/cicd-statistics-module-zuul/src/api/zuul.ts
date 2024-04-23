@@ -23,7 +23,7 @@ import {
   CicdDefaults,
   FetchBuildsOptions,
   FilterStatusType,
-} from '@backstage/plugin-cicd-statistics';
+} from '@backstage-community/plugin-cicd-statistics';
 
 export const ZUUL_TENANT_ANNOTATION = 'zuul-ci.org/tenant';
 export const ZUUL_PROJECT_ANNOTATION = 'zuul-ci.org/project';
