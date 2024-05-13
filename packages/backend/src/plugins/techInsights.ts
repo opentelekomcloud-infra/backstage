@@ -5,13 +5,13 @@ import {
   entityOwnershipFactRetriever,
   entityMetadataFactRetriever,
   //  techdocsFactRetriever,
-} from '@backstage/plugin-tech-insights-backend';
+} from '@backstage-community/plugin-tech-insights-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
 import {
   JsonRulesEngineFactCheckerFactory,
   JSON_RULE_ENGINE_CHECK_TYPE,
-} from '@backstage/plugin-tech-insights-backend-module-jsonfc';
+} from '@backstage-community/plugin-tech-insights-backend-module-jsonfc';
 
 const ttlTwoWeeks = { timeToLive: { weeks: 2 } };
 

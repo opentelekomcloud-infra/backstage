@@ -51,7 +51,7 @@ import {
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
 
-import { EntityCicdStatisticsContent } from '@backstage/plugin-cicd-statistics';
+import { EntityCicdStatisticsContent } from '@backstage-community/plugin-cicd-statistics';
 import { isZuulAvailable } from '@internal/backstage-plugin-cicd-statistics-module-zuul';
 
 import {
@@ -59,13 +59,13 @@ import {
   EntityGrafanaDashboardsCard,
 } from '@k-phoen/backstage-plugin-grafana';
 
-import { EntityTechInsightsScorecardContent } from '@backstage/plugin-tech-insights';
-import { EntityAdrContent, isAdrAvailable } from '@backstage/plugin-adr';
+import { EntityTechInsightsScorecardContent } from '@backstage-community/plugin-tech-insights';
+import { EntityAdrContent, isAdrAvailable } from '@backstage-community/plugin-adr';
 import { EntityGithubPullRequestsContent } from '@roadiehq/backstage-plugin-github-pull-requests';
 import { EntityGithubPullRequestsOverviewCard } from '@roadiehq/backstage-plugin-github-pull-requests';
 import {
   /* EntityTeamPullRequestsCard, */ EntityTeamPullRequestsContent,
-} from '@backstage/plugin-github-pull-requests-board';
+} from '@backstage-community/plugin-github-pull-requests-board';
 import {
   EntityGithubInsightsContent,
   EntityGithubInsightsLanguagesCard,

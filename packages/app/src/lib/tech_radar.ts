@@ -4,7 +4,7 @@ import {
   RadarEntry,
   TechRadarApi,
   TechRadarLoaderResponse,
-} from '@backstage/plugin-tech-radar';
+} from '@backstage-community/plugin-tech-radar';
 
 const rings = new Array<RadarRing>();
 rings.push({ id: 'adopt', name: 'Use', color: '#93c47d' });

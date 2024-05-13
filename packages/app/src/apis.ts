@@ -25,9 +25,9 @@ import {
 } from '@backstage/core-plugin-api';
 
 import { TechRadarClient } from './lib/tech_radar';
-import { techRadarApiRef } from '@backstage/plugin-tech-radar';
+import { techRadarApiRef } from '@backstage-community/plugin-tech-radar';
 
-import { cicdStatisticsApiRef } from '@backstage/plugin-cicd-statistics';
+import { cicdStatisticsApiRef } from '@backstage-community/plugin-cicd-statistics';
 import { CicdStatisticsApiZuul } from '@internal/backstage-plugin-cicd-statistics-module-zuul';
 
 export const giteaOauth2AuthApiRef: ApiRef<
@@ -46,7 +46,7 @@ export const apis: AnyApiFactory[] = [
     deps: { configApi: configApiRef },
     factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
   }),
-  //ScmAuth.createDefaultApiFactory(),
+  // ScmAuth.createDefaultApiFactory(),
   createApiFactory({
     api: scmAuthApiRef,
     deps: {

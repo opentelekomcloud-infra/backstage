@@ -1,4 +1,4 @@
-import { createRouter } from '@backstage/plugin-adr-backend';
+import { createRouter } from '@backstage-community/plugin-adr-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
 
