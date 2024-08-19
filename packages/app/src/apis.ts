@@ -24,8 +24,6 @@ import {
   SessionApi,
 } from '@backstage/core-plugin-api';
 
-import { TechRadarClient } from './lib/tech_radar';
-import { techRadarApiRef } from '@backstage-community/plugin-tech-radar';
 
 import { cicdStatisticsApiRef } from '@backstage-community/plugin-cicd-statistics';
 import { CicdStatisticsApiZuul } from '@internal/backstage-plugin-cicd-statistics-module-zuul';
@@ -93,5 +91,4 @@ export const apis: AnyApiFactory[] = [
       return new CicdStatisticsApiZuul({ discoveryApi });
     },
   }),
-  createApiFactory(techRadarApiRef, new TechRadarClient()),
 ];

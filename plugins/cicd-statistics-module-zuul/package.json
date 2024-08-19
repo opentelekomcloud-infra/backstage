@@ -13,26 +13,34 @@
   "backstage": {
     "role": "frontend-plugin-module"
   },
+  "sideEffects": false,
   "scripts": {
     "build": "backstage-cli package build",
     "lint": "backstage-cli package lint",
     "test": "backstage-cli package test",
     "clean": "backstage-cli package clean",
     "prepack": "backstage-cli package prepack",
-    "postpack": "backstage-cli package postpack"
+    "postpack": "backstage-cli package postpack",
+    "start": "backstage-cli package start"
   },
   "dependencies": {
-    "@backstage/catalog-model": "^1.4.5",
-    "@backstage/core-plugin-api": "^1.9.2",
+    "@backstage-community/plugin-cicd-statistics": "^0.1.40",
+    "@backstage/catalog-model": "^1.7.0",
+    "@backstage/core-plugin-api": "^1.9.4",
     "@backstage/errors": "^1.2.4",
-    "luxon": "^3.0.0",
-    "p-limit": "^4.0.0",
-    "@backstage-community/plugin-cicd-statistics": "^0.1.37"
+    "luxon": "^3.5.0",
+    "p-limit": "^6.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.26.4"
+    "@backstage/cli": "^0.27.1"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "peerDependencies": {
+    "react-router": "6.0.0-beta.0 || ^6.3.0",
+    "react-router-dom": "6.0.0-beta.0 || ^6.3.0"
+  }
 }

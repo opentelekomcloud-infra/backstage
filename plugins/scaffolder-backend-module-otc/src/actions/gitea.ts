@@ -18,11 +18,7 @@ import { ScmIntegrationRegistry } from '@backstage/integration';
 import { Config } from '@backstage/config';
 import { InputError } from '@backstage/errors';
 
-import {
-  parseRepoUrl,
-  initRepoAndPush,
-  getRepoSourceDirectory,
-} from './utils';
+import { parseRepoUrl, initRepoAndPush, getRepoSourceDirectory } from './utils';
 
 /**
  * Create a new action that creates a gitea repository.
@@ -141,6 +137,7 @@ export const createPublishGiteaAction = (options: {
           if (response.status === 404) {
             throw new NotFoundError(message);
           } else if (response.status === 409) {
+            // eslint-disable-next-line @typescript-eslint/no-shadow
             const message = `Repository ${repo} already exists`;
             throw new ConflictError(message);
           }
