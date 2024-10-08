@@ -1,0 +1,56 @@
+diff --git a/node_modules/@janus-idp/backstage-plugin-topology/dist/utils/icons.esm.js b/node_modules/@janus-idp/backstage-plugin-topology/dist/utils/icons.esm.js
+index 7b34767..3854c74 100644
+--- a/node_modules/@janus-idp/backstage-plugin-topology/dist/utils/icons.esm.js
++++ b/node_modules/@janus-idp/backstage-plugin-topology/dist/utils/icons.esm.js
+@@ -1,27 +1,27 @@
+-import defaultImg from '../plugins/topology/src/imgs/logos/defaulthub.svg';
+-import djangoImg from '../plugins/topology/src/imgs/logos/django.svg';
+-import dotnetImg from '../plugins/topology/src/imgs/logos/dotnet.svg';
+-import drupalImg from '../plugins/topology/src/imgs/logos/drupal.svg';
+-import goLangImg from '../plugins/topology/src/imgs/logos/golang.svg';
+-import grailsImg from '../plugins/topology/src/imgs/logos/grails.svg';
+-import jbossImg from '../plugins/topology/src/imgs/logos/jboss.svg';
+-import jrubyImg from '../plugins/topology/src/imgs/logos/jruby.svg';
+-import jsImg from '../plugins/topology/src/imgs/logos/js.svg';
+-import nginxImg from '../plugins/topology/src/imgs/logos/nginx.svg';
+-import nodejsImg from '../plugins/topology/src/imgs/logos/nodejs.svg';
+-import openjdkImg from '../plugins/topology/src/imgs/logos/openjdk.svg';
+-import perlImg from '../plugins/topology/src/imgs/logos/perl.svg';
+-import phalconImg from '../plugins/topology/src/imgs/logos/phalcon.svg';
+-import phpImg from '../plugins/topology/src/imgs/logos/php.svg';
+-import pythonImg from '../plugins/topology/src/imgs/logos/python.svg';
+-import quarkusImg from '../plugins/topology/src/imgs/logos/quarkus.svg';
+-import railsImg from '../plugins/topology/src/imgs/logos/rails.svg';
+-import redisImg from '../plugins/topology/src/imgs/logos/redis.svg';
+-import rhSpringBoot from '../plugins/topology/src/imgs/logos/rh-spring-boot.svg';
+-import rubyImg from '../plugins/topology/src/imgs/logos/ruby.svg';
+-import rustImg from '../plugins/topology/src/imgs/logos/rust.svg';
+-import springBootImg from '../plugins/topology/src/imgs/logos/spring-boot.svg';
+-import springImg from '../plugins/topology/src/imgs/logos/spring.svg';
++import defaultImg from '../imgs/logos/defaulthub.svg';
++import djangoImg from '../imgs/logos/django.svg';
++import dotnetImg from '../imgs/logos/dotnet.svg';
++import drupalImg from '../imgs/logos/drupal.svg';
++import goLangImg from '../imgs/logos/golang.svg';
++import grailsImg from '../imgs/logos/grails.svg';
++import jbossImg from '../imgs/logos/jboss.svg';
++import jrubyImg from '../imgs/logos/jruby.svg';
++import jsImg from '../imgs/logos/js.svg';
++import nginxImg from '../imgs/logos/nginx.svg';
++import nodejsImg from '../imgs/logos/nodejs.svg';
++import openjdkImg from '../imgs/logos/openjdk.svg';
++import perlImg from '../imgs/logos/perl.svg';
++import phalconImg from '../imgs/logos/phalcon.svg';
++import phpImg from '../imgs/logos/php.svg';
++import pythonImg from '../imgs/logos/python.svg';
++import quarkusImg from '../imgs/logos/quarkus.svg';
++import railsImg from '../imgs/logos/rails.svg';
++import redisImg from '../imgs/logos/redis.svg';
++import rhSpringBoot from '../imgs/logos/rh-spring-boot.svg';
++import rubyImg from '../imgs/logos/ruby.svg';
++import rustImg from '../imgs/logos/rust.svg';
++import springBootImg from '../imgs/logos/spring-boot.svg';
++import springImg from '../imgs/logos/spring.svg';
+ 
+ const logos = (/* @__PURE__ */ new Map()).set("icon-django", djangoImg).set("icon-dotnet", dotnetImg).set("icon-drupal", drupalImg).set("icon-go-gopher", goLangImg).set("icon-golang", goLangImg).set("icon-grails", grailsImg).set("icon-jboss", jbossImg).set("icon-jruby", jrubyImg).set("icon-js", jsImg).set("icon-nginx", nginxImg).set("icon-nodejs", nodejsImg).set("icon-openjdk", openjdkImg).set("icon-perl", perlImg).set("icon-phalcon", phalconImg).set("icon-php", phpImg).set("icon-python", pythonImg).set("icon-quarkus", quarkusImg).set("icon-rails", railsImg).set("icon-redis", redisImg).set("icon-rh-spring-boot", rhSpringBoot).set("icon-rust", rustImg).set("icon-java", openjdkImg).set("icon-rh-openjdk", openjdkImg).set("icon-ruby", rubyImg).set("icon-spring", springImg).set("icon-spring-boot", springBootImg).set("icon-default", defaultImg);
+ const getImageForIconClass = (iconClass) => {

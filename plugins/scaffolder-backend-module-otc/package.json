@@ -19,20 +19,29 @@
     "test": "backstage-cli package test",
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack",
-    "clean": "backstage-cli clean"
+    "clean": "backstage-cli package clean"
   },
   "dependencies": {
-    "@backstage/backend-common": "^0.21.7",
-    "@backstage/core-app-api": "^1.12.4",
-    "@backstage/core-plugin-api": "^1.9.2",
-    "@backstage/plugin-scaffolder-backend": "^1.22.4",
-    "@backstage/plugin-scaffolder-node": "^0.4.3",
-    "cross-fetch": "^3.1.4"
+    "@backstage/config": "^1.2.0",
+    "@backstage/core-app-api": "^1.15.0",
+    "@backstage/core-plugin-api": "^1.9.4",
+    "@backstage/errors": "^1.2.4",
+    "@backstage/integration": "^1.15.0",
+    "@backstage/plugin-scaffolder-backend": "^1.25.0",
+    "@backstage/plugin-scaffolder-node": "^0.4.11",
+    "cross-fetch": "^4.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "winston": "^3.14.2"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.26.4"
+    "@backstage/cli": "^0.27.1"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "peerDependencies": {
+    "react-router": "6.0.0-beta.0 || ^6.3.0",
+    "react-router-dom": "6.0.0-beta.0 || ^6.3.0"
+  }
 }
