@@ -2,7 +2,7 @@ name: Bump yarn versions
 
 on:
   schedule:
-  - cron: '@weekly'
+  - cron: '0 12 3 * *'
 
 jobs:
   bump-versions:
