@@ -1,0 +1,14 @@
+name: Bump yarn versions
+
+on:
+  schedule:
+  - cron: '@weekly'
+
+jobs:
+  bump-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - run: yarn install --immutable
+      - run: ./update.sh
