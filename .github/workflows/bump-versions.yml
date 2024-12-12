@@ -23,8 +23,14 @@ jobs:
           node-version: '20'
           cache: 'yarn'
 
+      - name: Setup Yarn Berry
+        run: |
+          corepack enable
+          corepack prepare yarn@3.5.0 --activate
+          yarn set version 3.5.0
+
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Update dependencies
         run: |
