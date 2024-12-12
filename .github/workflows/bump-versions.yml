@@ -17,5 +17,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - run: corepack enable && yarn install --immutable
-      - run: ./update.sh
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Update dependencies
+        run: |
+          ./update.sh
+          
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update dependencies'
+          title: '⬆️ Update Dependencies'
+          body: |
+            Automated dependency updates.
+            
+            Please review the changes and make sure all tests pass before merging.
+          branch: dependency-updates
+          delete-branch: true
+          labels: dependencies
