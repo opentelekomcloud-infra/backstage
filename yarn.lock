@@ -3752,51 +3752,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@backstage/catalog-model@npm:^1.2.1, @backstage/catalog-model@npm:^1.5.0, @backstage/catalog-model@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "@backstage/catalog-model@npm:1.6.0"
+"@backstage/catalog-model@npm:^1.2.1, @backstage/catalog-model@npm:^1.5.0, @backstage/catalog-model@npm:^1.6.0, @backstage/catalog-model@npm:^1.7.0, @backstage/catalog-model@npm:^1.7.1, @backstage/catalog-model@npm:^1.7.2":
+  version: 1.7.3
+  resolution: "@backstage/catalog-model@npm:1.7.3"
   dependencies:
-    "@backstage/errors": ^1.2.4
-    "@backstage/types": ^1.1.1
+    "@backstage/errors": ^1.2.7
+    "@backstage/types": ^1.2.1
     ajv: ^8.10.0
     lodash: ^4.17.21
-  checksum: b3bac3578a43b4d3f9e2fcd90396b5043f8c1e46f5308c5204b7973c79e76e465b3804edc985355cb4b3f669d065e1522b25bc6ee38567b5c74341b2d115ecf0
-  languageName: node
-  linkType: hard
-
-"@backstage/catalog-model@npm:^1.7.0":
-  version: 1.7.0
-  resolution: "@backstage/catalog-model@npm:1.7.0"
-  dependencies:
-    "@backstage/errors": ^1.2.4
-    "@backstage/types": ^1.1.1
-    ajv: ^8.10.0
-    lodash: ^4.17.21
-  checksum: 6ff537e9e6064d35fa4a173a1c96f94e904489494a67a136e2dd0a743f9e3f4fd8a1f7a661fe8495dfbb642aabcc8fbf1746a300ad496b6e4a5d02f4db00f914
-  languageName: node
-  linkType: hard
-
-"@backstage/catalog-model@npm:^1.7.1":
-  version: 1.7.1
-  resolution: "@backstage/catalog-model@npm:1.7.1"
-  dependencies:
-    "@backstage/errors": ^1.2.5
-    "@backstage/types": ^1.2.0
-    ajv: ^8.10.0
-    lodash: ^4.17.21
-  checksum: 05e2b386aac897f8ac87c1e479101f8da90d96c517c837b99796a4118cce63932ffbb29fbb1f8ec156258370ff5bab65555bbe2fd7091be438f8c554f0a5bdff
-  languageName: node
-  linkType: hard
-
-"@backstage/catalog-model@npm:^1.7.2":
-  version: 1.7.2
-  resolution: "@backstage/catalog-model@npm:1.7.2"
-  dependencies:
-    "@backstage/errors": ^1.2.6
-    "@backstage/types": ^1.2.0
-    ajv: ^8.10.0
-    lodash: ^4.17.21
-  checksum: 97b166303e9428c03e20750360f830a3810e70362143429e847df552cc197c60a560075f59776515518f618d9e754e377d07abaefaf6b73df8b08385f3bdd00d
+  checksum: 1f6202986b13c112cc35481daea2da929656e775b8158c5a796be64e5ff4d1457012935e41574633bc47f437cf228d82f547232b35761359c8273190e8a14889
   languageName: node
   linkType: hard
 
@@ -4462,6 +4426,16 @@ __metadata:
     "@backstage/types": ^1.2.0
     serialize-error: ^8.0.1
   checksum: 9867157464cf5f8821109faa46c101a30f94b701e08b7cb23c5884a2e83aa4b06ff7118b62210da84db1a770b1171ec219b161caf04748ad4b8c2f90a9f0fdc5
+  languageName: node
+  linkType: hard
+
+"@backstage/errors@npm:^1.2.7":
+  version: 1.2.7
+  resolution: "@backstage/errors@npm:1.2.7"
+  dependencies:
+    "@backstage/types": ^1.2.1
+    serialize-error: ^8.0.1
+  checksum: e0b5be754e59a11330a580fc2973e441883b9022248ad77e06aa9e4e0705c83e43cb96cbf405336650c1724aa16cac2eaf5ffb64142654b599e46a4888ca353d
   languageName: node
   linkType: hard
 
@@ -7226,6 +7200,13 @@ __metadata:
   version: 1.2.0
   resolution: "@backstage/types@npm:1.2.0"
   checksum: a8b22a95b7c64bde31927e18f6892bb0be949bd1a7bc5d9ef1e4d9df984ff80144148a6019a69d1084f6214fcb9536fdd7d8f2fb3708ef373ff2e1bac28442b0
+  languageName: node
+  linkType: hard
+
+"@backstage/types@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "@backstage/types@npm:1.2.1"
+  checksum: 4cf2f2fd5ca6e5f4716c5511ca00cdc8502387976a796098fec9cfd2aea6c6d077c13a46da43b1a7ff1c05fd7b208e7a45b51bbbd024319e9e7a053254fd2222
   languageName: node
   linkType: hard
 
