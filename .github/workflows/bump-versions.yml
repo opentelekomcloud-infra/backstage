@@ -1,0 +1,51 @@
+name: Bump yarn versions
+
+on:
+  # schedule:
+  # - cron: '0 12 3 * *'
+  pull_request:
+    types:
+      - opened
+      - closed
+      - edited
+      - reopened
+      - synchronize
+
+jobs:
+  bump-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Setup Yarn Berry
+        run: |
+          corepack enable
+          corepack prepare yarn@3.5.0 --activate
+          yarn set version 3.5.0
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Update dependencies
+        run: |
+          ./update.sh
+          
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update dependencies'
+          title: '⬆️ Update Dependencies'
+          body: |
+            Automated dependency updates.
+            
+            Please review the changes and make sure all tests pass before merging.
+          branch: dependency-updates
+          delete-branch: true
+          labels: dependencies
