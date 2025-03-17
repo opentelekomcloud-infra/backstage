@@ -24,8 +24,8 @@ backend.add(import('@backstage/plugin-proxy-backend/alpha'));
 backend.add(import('@backstage/plugin-scaffolder-backend/alpha'));
 backend.add(import('@backstage/plugin-scaffolder-backend-module-github'));
 backend.add(import('@backstage/plugin-search-backend/alpha'));
-backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
-backend.add(import('@backstage/plugin-search-backend-module-explore/alpha'));
+backend.add(import('@backstage/plugin-search-backend-module-catalog'));
+backend.add(import('@backstage/plugin-search-backend-module-explore'));
 
 // TODO:(awanlin) enable when issue causing crashes is resolved
 // https://github.com/backstage/backstage/issues/23047
