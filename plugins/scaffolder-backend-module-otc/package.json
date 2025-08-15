@@ -27,7 +27,7 @@
     "@backstage/core-plugin-api": "^1.9.4",
     "@backstage/errors": "^1.2.4",
     "@backstage/integration": "^1.15.0",
-    "@backstage/plugin-scaffolder-backend": "^1.25.0",
+    "@backstage/plugin-scaffolder-backend": "^2.1.1",
     "@backstage/plugin-scaffolder-node": "^0.4.11",
     "cross-fetch": "^4.0.0",
     "react": "^17.0.2",
